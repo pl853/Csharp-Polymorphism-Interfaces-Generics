@@ -17,31 +17,18 @@ namespace Simple_Library.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // N-N relation Teacher-Class
-            modelBuilder.Entity<TeacherClass>()
-            .HasKey(t => new { t.TeacherId, t.ClassId});
+            modelBuilder.Entity<BookAuthor>()
+                .HasKey(k => new {k.AuthorId,k.BookId});
 
-            modelBuilder.Entity<TeacherClass>()
-                .HasOne(x => x.Teacher)
-                .WithMany(x => x.Classes)
-                .HasForeignKey(x => x.TeacherId);
-            modelBuilder.Entity<TeacherClass>()
-                .HasOne(x => x.Class)
-                .WithMany(x => x.Teachers)
-                .HasForeignKey(x => x.ClassId);
+            modelBuilder.Entity<BookAuthor>()
+                .HasOne(x=> x.Author)
+                .WithMany(xi => xi.Books)
+                .HasForeignKey(x=>x.AuthorId);
 
-            // N-N relation Student-Class
-            modelBuilder.Entity<StudentClass>()
-            .HasKey(t => new { t.StudentId, t.ClassId});
-
-            modelBuilder.Entity<StudentClass>()
-                .HasOne(x => x.Student)
-                .WithMany(x => x.Classes)
-                .HasForeignKey(x => x.StudentId);
-            modelBuilder.Entity<StudentClass>()
-                .HasOne(x => x.Class)
-                .WithMany(x => x.Students)
-                .HasForeignKey(x => x.ClassId);
+            modelBuilder.Entity<BookAuthor>()
+                .HasOne(x=>x.Book)
+                .WithMany(xi=>xi.Authors)
+                .HasForeignKey(x=>x.BookId);
         }
     }
 }
