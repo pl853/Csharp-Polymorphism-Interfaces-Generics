@@ -1,12 +1,13 @@
 using System;
+using Csharp_Polymorphism_Interfaces_Generics.Utils;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects
 {
-    class Interfaces
+    class Interfaces : Main
     {
-        public Interfaces()
+        public Interfaces(string subjectName="Interfaces") : base(subjectName)
         {
-            Console.WriteLine("Hello World!");
+            ReturnInfo();
         }
     }
 }

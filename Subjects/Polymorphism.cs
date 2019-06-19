@@ -1,12 +1,13 @@
 using System;
+using Csharp_Polymorphism_Interfaces_Generics.Utils;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects
 {
-    class Polymorphism
+    class Polymorphism : Main
     {
-        public Polymorphism()
+        public Polymorphism(string subjectName ="Pylomorphism") : base(subjectName)
         {
-            Console.WriteLine("Hello World!");
+            ReturnInfo();
         }
     }
 }
