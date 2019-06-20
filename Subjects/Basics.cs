@@ -367,7 +367,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects
             numberOfLines = myCanvas.numLines;
             myCanvas.AddLine(line2);
             numberOfLines = myCanvas.numLines;  
-            this.ReturnsAnswer(numLines.ToString());
+            this.ReturnsAnswer(null);
             System.Console.WriteLine(this.ReturnCorrect());
        }
        public void AddLine(Line lineToAdd)

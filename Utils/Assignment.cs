@@ -19,8 +19,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
         {
             if(this.isCorrect)
             {
-                return "The assignment " +this.assignmentName + " is correct";
-            }else return "The assignment " +this.assignmentName + " is correct";
+                return "The Code of " +this.assignmentName + " is correct";
+            }else return "The Code of " +this.assignmentName + " is incorrect";
         }
 
         public void ReturnsAnswer(string answer=null)
