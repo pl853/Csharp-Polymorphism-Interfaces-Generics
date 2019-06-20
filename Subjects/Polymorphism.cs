@@ -3,8 +3,8 @@ using Csharp_Polymorphism_Interfaces_Generics.Utils;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
     class Polymorphism : Subject {
-        public Polymorphism (string subjectName = "Pylomorphism") : base (subjectName) {
-            ReturnInfo ();
+        public Polymorphism (string subjectName = "Polymorphism") : base (subjectName) {
+            System.Console.WriteLine(ReturnInfo());
         }
         public override void AddMainLogic () {
             X xInstance = new X ();
@@ -16,6 +16,9 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             StudentPolymorphism studentPolymorphismInstance = new StudentPolymorphism ();
             studentPolymorphismInstance.AddLogic ();
 
+            Simple simpleInstance = new Simple();
+            simpleInstance.AddLogic();
+
             X_h x_hInstance = new X_h ();
             x_hInstance.AddLogic ();
 
@@ -25,6 +28,24 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             Shape shapeInstance = new Shape ();
             shapeInstance.AddLogic ();
 
+            Tool toolInstace = new Tool();
+            toolInstace.AddLogic();
+
+            A aInstance = new A();
+            aInstance.AddLogic();
+
+            CarPolymorphism carInstance = new CarPolymorphism();
+            carInstance.AddLogic();
+            
+            StudentPolymorphism3 studentPolymorphism3Instance = new StudentPolymorphism3();
+            studentPolymorphism3Instance.AddLogic();
+
+            Fighter fighterInstance = new Fighter();
+            fighterInstance.AddLogic();
+
+        }
+        public override string ReturnInfo () {
+            return "You chose the subject: "+this.subjectName + "\n";
         }
     }
 
@@ -121,7 +142,30 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             return this.StudentName;
         }
     }
+    class Simple :Assignment {
 
+    public Simple(string assignmentName="SimplePolymorphism"):base(assignmentName){}
+    public override void AddLogic(){
+      double n1 = 36.0;
+      int x1 = 2;
+      int res1 = ComputeAmountOfDivisions(n1, x1);
+
+      double n2 = 1024.0;
+      int x2 = 2;
+      int res2 = ComputeAmountOfDivisions(n2, x2);      
+
+      double n3 = 3333.0;
+      int x3 = 3;
+      int res3 = ComputeAmountOfDivisions(n3, x3); 
+      this.ReturnsAnswer (null);
+      System.Console.WriteLine (this.ReturnCorrect ());
+      
+    }
+
+    public static int ComputeAmountOfDivisions(  double n, int   x){
+        return 0;
+    }
+    }
     class X_h : Assignment {
         public int a;
         public double b;
@@ -222,6 +266,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
                     tools[j].Use ();
                 }
             }
+            this.ReturnsAnswer (tools.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
 
         public virtual void Use () {
@@ -266,6 +312,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             result = object2.GetA ();
             A object3 = new A (9001);
             result = object3.GetA ();
+            this.ReturnsAnswer (result.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
 
         public virtual double GetA () {
@@ -317,6 +365,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             output = weekendCar.RoofType ();
             output = storePrimaryInCarVar.RoofType ();
             output = storeWeekendInCarVar.RoofType ();
+            this.ReturnsAnswer (output.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
 
         public string CarInfo () => "Car type: " + this.carType + ". Build year: " + this.carYear + ". Car name: " + this.carName + "\n" + " I drove it for " + this.mileage + " KM";
@@ -367,6 +417,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             Triangle tri = new Triangle (6, 9);
             string tri_dims = tri.GetDims ();
             double area = tri.Area ();
+            this.ReturnsAnswer (area.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
 
         public virtual string GetDims () {
@@ -394,6 +446,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
         public StudentPolymorphism3 () : base () { this.assignmentName = "StudentPolymorphism3"; }
 
         public StudentPolymorphism3 (string name) {
+            this.base_Person = new PersonPolymorphism1();
             this.name = name;
         }
 
@@ -404,10 +457,12 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             var y = s.SayHello ();
             s.Shrink ();
             var z = s.SayHello ();
+            this.ReturnsAnswer (z.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
 
         public string SayHello () {
-            return this.name + ": " + this.base_Person.SayHello ();
+            return this.name + ": " + this.base_Person.SayHello();
         }
 
         public void Shrink () {
@@ -467,6 +522,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             else
                 outcome = "In war there are no winners, only widows.";
             var x = outcome;
+            this.ReturnsAnswer (outcome.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
         }
         public virtual int GetHP () {
             return this.healthPoints;

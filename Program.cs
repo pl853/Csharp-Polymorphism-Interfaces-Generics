@@ -9,34 +9,41 @@ namespace Csharp_Polymorphism_Interfaces_Generics {
 
         static void RunApp () {
             bool appRunning = true;
+            Console.Clear();
             while (appRunning) {
                 Console.Write ("Select a subject: a for basics, b for polymorphism, c for interfaces, e to exit" + "\n");
                 string caseSwitch = Console.ReadLine ();
                 System.Console.WriteLine ("\n");
                 switch (caseSwitch) {
                     case "a":
+                        Console.Clear();
                         Basics basics = new Basics ();
                         basics.ToggleState (true);
                         if (basics.isRunning) {
                             basics.AddMainLogic ();
+                            System.Console.ResetColor();
                         } else System.Console.WriteLine ("Basics not running");
                         System.Console.WriteLine ("\n");
                         break;
 
                     case "b":
+                        Console.Clear();
                         Polymorphism polymorphism = new Polymorphism ();
                         polymorphism.ToggleState (true);
                         if (polymorphism.isRunning) {
                             polymorphism.AddMainLogic ();
+                            System.Console.ResetColor();
                         } else System.Console.WriteLine ("Polymorphism not running");
                         System.Console.WriteLine ("\n");
                         break;
 
                     case "c":
+                        Console.Clear();
                         Interfaces interfaces = new Interfaces ();
-                        interfaces.ToggleState (true);
+                        interfaces.ToggleState (true);;
                         if (interfaces.isRunning) {
                             interfaces.AddMainLogic ();
+                            System.Console.ResetColor();
                         } else System.Console.WriteLine ("interfaces not running");
                         System.Console.WriteLine ("\n");
                         break;
@@ -47,6 +54,8 @@ namespace Csharp_Polymorphism_Interfaces_Generics {
                         break;
 
                     default:
+                        Console.Clear();
+                        System.Console.WriteLine("Not a valid option please try again.");
                         break;
                 }
             }

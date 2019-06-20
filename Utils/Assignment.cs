@@ -12,9 +12,15 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils {
         }
 
         public string ReturnCorrect () {
+            
             if (this.isCorrect) {
+                System.Console.ForegroundColor = System.ConsoleColor.Green;
                 return "The Code of " + this.assignmentName + " is correct";
-            } else return "The Code of " + this.assignmentName + " is incorrect";
+            } else {
+                System.Console.ForegroundColor = System.ConsoleColor.Red;
+                return "The Code of " + this.assignmentName + " is Incorrect"; 
+            }
+            
         }
 
         public void ReturnsAnswer (string answer = null) {

@@ -4,7 +4,7 @@ using Csharp_Polymorphism_Interfaces_Generics.Utils;
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
     class Basics : Subject {
         public Basics (string subjectName = "Basics") : base (subjectName) {
-            ReturnInfo ();
+            System.Console.WriteLine(ReturnInfo());
         }
         public override void AddMainLogic () {
             //STUDENT RELATED
@@ -13,6 +13,12 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             //CAT RELATED
             Cat catInstance = new Cat ();
             catInstance.AddLogic ();
+            //RECTANGLE RELATED
+            Rectangle rectangleInstance = new Rectangle();
+            rectangleInstance.AddLogic();
+            //PLANTED RELATED
+            Planet planetInstance = new Planet();
+            planetInstance.AddLogic();
             //VECTOR RELATED
             Vector2 vector2Instance = new Vector2 ();
             vector2Instance.AddLogic ();
@@ -29,6 +35,9 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             Canvas canvasInstance = new Canvas ();
             canvasInstance.AddLogic ();
             //CARD RELATED
+        }
+        public override string ReturnInfo () {
+            return "You chose the subject: "+this.subjectName + "\n";
         }
     }
     class Student : Assignment {

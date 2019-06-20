@@ -7,8 +7,23 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             System.Console.WriteLine(ReturnInfo());
         }
         public override void AddMainLogic () {
+            //BA-1 RELATED
             Timer timerInstance = new Timer ();
             timerInstance.AddLogic ();
+
+            //BA-2 RELATED
+            AInstacte aInstance = new AInstacte();
+            aInstance.AddLogic();
+
+            //BA-4 RELATED
+            DEV4_Int dev4_IntInstance = new DEV4_Int();
+            dev4_IntInstance.AddLogic();
+
+            //BA-5 RELATED
+            Adventure adventureInstance = new Adventure();
+            adventureInstance.AddLogic();
+
+
         }
 
         public override string ReturnInfo () {
@@ -37,14 +52,13 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             this.amount = this.amount + 1;
         }
     }
-    abstract class AInterfaces : Assignment {
-        public abstract string m_1 ();
-        public abstract string m_2 ();
-        public virtual string m_3 () { return "8"; }
+    
+    class AInstacte : Assignment
+    {
+        public AInstacte (string assignmentName = "AInterfaces") : base (assignmentName) { }
 
-        public AInterfaces (string assignmentName = "AInterfaces") : base (assignmentName) { }
-
-        public override void AddLogic () {
+        public override void AddLogic()
+        {
             AInterfaces v1 = new BInterfaces ();
             AInterfaces v2 = new CInterfaces ();
             var v3 = new DInterfaces ();
@@ -65,6 +79,11 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
 
             var easter_egg = s3 + s2 + s3b + s1b;
         }
+    }
+    abstract class AInterfaces{
+        public abstract string m_1 ();
+        public abstract string m_2 ();
+        public virtual string m_3 () { return "8"; }
     }
 
     class BInterfaces : AInterfaces {
