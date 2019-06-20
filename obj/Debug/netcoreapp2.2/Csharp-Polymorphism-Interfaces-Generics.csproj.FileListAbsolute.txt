@@ -1,0 +1,11 @@
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/bin/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.deps.json
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/bin/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.runtimeconfig.json
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/bin/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.runtimeconfig.dev.json
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/bin/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.dll
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/bin/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.pdb
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.csprojAssemblyReference.cache
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.csproj.CoreCompileInputs.cache
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.AssemblyInfoInputs.cache
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.AssemblyInfo.cs
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.dll
+/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/Debug/netcoreapp2.2/Csharp-Polymorphism-Interfaces-Generics.pdb

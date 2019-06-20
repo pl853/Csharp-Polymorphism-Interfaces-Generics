@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/system-user/Documents/Csharp-Polymorphism-Interfaces-Generics/Csharp-Polymorphism-Interfaces-Generics.csproj",
+      "projectUniqueName": "/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/Csharp-Polymorphism-Interfaces-Generics.csproj",
       "projectName": "Csharp-Polymorphism-Interfaces-Generics",
-      "projectPath": "/home/system-user/Documents/Csharp-Polymorphism-Interfaces-Generics/Csharp-Polymorphism-Interfaces-Generics.csproj",
+      "projectPath": "/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/Csharp-Polymorphism-Interfaces-Generics.csproj",
       "packagesPath": "/home/system-user/.nuget/packages/",
-      "outputPath": "/home/system-user/Documents/Csharp-Polymorphism-Interfaces-Generics/obj/",
+      "outputPath": "/home/system-user/Documents/Projects/Csharp-Polymorphism-Interfaces-Generics/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

@@ -2,12 +2,12 @@ using System;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Utils
 {
-    class Main
+    class Subject
     {
         public string subjectName;
         public bool isRunning;
         
-        public Main(string subjectName)
+        public Subject(string subjectName)
         {
             this.subjectName = subjectName;
             this.isRunning = false;

@@ -8,7 +8,6 @@ namespace Csharp_Polymorphism_Interfaces_Generics
         static void Main(string[] args)
         {
             RunApp();
-            
         }
 
         static void RunApp()
@@ -26,7 +25,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics
                         basics.ToggleState(true);
                         if(basics.isRunning)
                         {
-                            basics.AddMainLogic();
+                        basics.AddMainLogic();
                         }else System.Console.WriteLine("Basics not running");
                         System.Console.WriteLine("\n");
                         break;
