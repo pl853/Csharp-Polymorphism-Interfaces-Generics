@@ -36,9 +36,6 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             canvasInstance.AddLogic ();
             //CARD RELATED
         }
-        public override string ReturnInfo () {
-            return "You chose the subject: "+this.subjectName + "\n";
-        }
     }
     class Student : Assignment {
         public string firstName, lastName;

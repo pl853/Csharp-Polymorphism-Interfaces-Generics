@@ -14,7 +14,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils {
         }
 
         public virtual string ReturnInfo () {
-            return "Chosen subject: " + this.subjectName;
+            return "Chosen subject: " + this.subjectName +"\n";
         }
 
         public virtual void ToggleState (bool value) {

@@ -11,7 +11,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics {
             bool appRunning = true;
             Console.Clear();
             while (appRunning) {
-                Console.Write ("Select a subject: a for basics, b for polymorphism, c for interfaces, e to exit" + "\n");
+                Console.Write ("Select a subject: a for basics, b for polymorphism, c for interfaces, d for generics, e to exit" + "\n");
                 string caseSwitch = Console.ReadLine ();
                 System.Console.WriteLine ("\n");
                 switch (caseSwitch) {
@@ -40,16 +40,26 @@ namespace Csharp_Polymorphism_Interfaces_Generics {
                     case "c":
                         Console.Clear();
                         Interfaces interfaces = new Interfaces ();
-                        interfaces.ToggleState (true);;
+                        interfaces.ToggleState (true);
                         if (interfaces.isRunning) {
                             interfaces.AddMainLogic ();
                             System.Console.ResetColor();
                         } else System.Console.WriteLine ("interfaces not running");
                         System.Console.WriteLine ("\n");
                         break;
+                    case "d":
+                        Console.Clear();
+                        Generics generics = new Generics();
+                        generics.ToggleState(true);
+                        if(generics.isRunning)
+                        {
+                            generics.AddMainLogic();
+                        }
+                        break;
 
                     case "e":
                         System.Console.WriteLine ("Shutting down");
+                        Console.Clear();
                         appRunning = false;
                         break;
 
