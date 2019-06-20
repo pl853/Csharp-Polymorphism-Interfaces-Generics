@@ -36,9 +36,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
         public int studentNumber;
         public string[] courses;
 
-        public Student (string assignmentName = "StudentBasic") : base (assignmentName) {
-
-        }
+        public Student (string assignmentName = "StudentBasic") : base (assignmentName) { }
         public Student (string firstName, string lastName, int studentNumber, string[] courses) : base () {
             this.firstName = firstName;
             this.lastName = lastName;

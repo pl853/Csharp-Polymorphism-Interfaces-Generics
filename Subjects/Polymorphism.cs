@@ -22,6 +22,9 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             Person personInstance = new Person ();
             personInstance.AddLogic ();
 
+            Shape shapeInstance = new Shape ();
+            shapeInstance.AddLogic ();
+
         }
     }
 
@@ -248,4 +251,298 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             this.durability -= 5;
         }
     }
+    class A : Assignment {
+        public double a;
+
+        public A (string assignmentName = "APolymorphism") : base (assignmentName) { }
+        public A (int a) {
+            this.a = a;
+        }
+
+        public override void AddLogic () {
+            B object1 = new B (555, 883);
+            double result = object1.GetA ();
+            A object2 = new B (123, 321);
+            result = object2.GetA ();
+            A object3 = new A (9001);
+            result = object3.GetA ();
+        }
+
+        public virtual double GetA () {
+            return this.a;
+        }
+    }
+
+    class B : A {
+        public int b1;
+
+        public B (int b1, int a) : base (a) {
+            this.b1 = b1;
+        }
+
+        public override double GetA () {
+            return this.b1 * 10.0;
+        }
+    }
+
+    class CarPolymorphism : Assignment {
+        public string carName;
+        public int carYear;
+        public int mileage;
+        public string carType;
+
+        public CarPolymorphism (string assignmentName = "CarPolymorphism") : base (assignmentName) { }
+        public CarPolymorphism (string carName, int carYear, int mileage) {
+            this.carName = carName;
+            this.carYear = carYear;
+            this.mileage = mileage;
+            this.carType = "Boredom";
+        }
+
+        public override void AddLogic () {
+            var boreCar = new CarPolymorphism ("Boremobile", 1990, 0);
+            var mainCar = new Primary ("BMW X6", 2015, 20000);
+            var weekendCar = new Weekend ("Ford mustang", 1965, 160000);
+            CarPolymorphism storePrimaryInCarVar = new Primary ("Toyota Yaris", 2015, 222);
+            CarPolymorphism storeWeekendInCarVar = new Primary ("Ferrari 458 Italia Coupe", 2018, 10000);
+
+            string output = "";
+            output = boreCar.CarInfo ();
+            output = boreCar.RoofType ();
+            output = mainCar.CarInfo ();
+            output = mainCar.DriveFast ();
+            output = mainCar.RoofType ();
+            output = weekendCar.CarInfo ();
+            output = weekendCar.DriveInStyle ();
+            output = weekendCar.RoofType ();
+            output = storePrimaryInCarVar.RoofType ();
+            output = storeWeekendInCarVar.RoofType ();
+        }
+
+        public string CarInfo () => "Car type: " + this.carType + ". Build year: " + this.carYear + ". Car name: " + this.carName + "\n" + " I drove it for " + this.mileage + " KM";
+
+        public virtual string RoofType () {
+            return "unknown";
+        }
+    }
+
+    class Primary : CarPolymorphism {
+        public Primary (string carName, int carYear, int mileage) : base (carName, carYear, mileage) {
+            this.carType = "Primary";
+
+        }
+        public string DriveFast () {
+            return "Whoop I am fast";
+        }
+        public override string RoofType () {
+            return "Sunroofs";
+        }
+    }
+
+    class Weekend : CarPolymorphism {
+        public Weekend (string carName, int carYear, int mileage) : base (carName, carYear, mileage) {
+            this.carType = "Weekend";
+
+        }
+        public string DriveInStyle () {
+            return "I am cruising on the highway";
+        }
+        public override string RoofType () {
+            return "Convertible";
+        }
+    }
+
+    class Shape : Assignment {
+        public int x, y;
+        public Shape (string assignmentName = "ShapePolymorphism") : base (assignmentName) { }
+        public Shape (int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public override void AddLogic () {
+            Shape shape = new Shape (10, 30);
+            string shape_dims = shape.GetDims ();
+
+            Triangle tri = new Triangle (6, 9);
+            string tri_dims = tri.GetDims ();
+            double area = tri.Area ();
+        }
+
+        public virtual string GetDims () {
+            return "Width: " + this.x + "; Height: " + this.y;
+        }
+
+    }
+
+    class Triangle : Shape {
+
+        public Triangle (int x, int y) : base (x, y) {
+
+        }
+
+        public double Area () {
+            return (this.x * this.y / 2);
+        }
+
+    }
+
+    class StudentPolymorphism3 : Assignment {
+        string name;
+        PersonPolymorphism1 base_Person;
+
+        public StudentPolymorphism3 () : base () { this.assignmentName = "StudentPolymorphism3"; }
+
+        public StudentPolymorphism3 (string name) {
+            this.name = name;
+        }
+
+        public override void AddLogic () {
+            var s = new StudentPolymorphism3 ("Marlow");
+            var x = s.SayHello ();
+            s.Enlarge ();
+            var y = s.SayHello ();
+            s.Shrink ();
+            var z = s.SayHello ();
+        }
+
+        public string SayHello () {
+            return this.name + ": " + this.base_Person.SayHello ();
+        }
+
+        public void Shrink () {
+            this.base_Person = new ShortPerson ();
+        }
+
+        public void Enlarge () {
+            this.base_Person = new TallPerson ();;
+        }
+
+    }
+    public class PersonPolymorphism1 {
+        public virtual string SayHello () {
+            return "hello!";
+        }
+    }
+
+    public class TallPerson : PersonPolymorphism1 {
+        public override string SayHello () {
+            return "nice weather up here!";
+        }
+    }
+
+    public class ShortPerson : PersonPolymorphism1 {
+        public override string SayHello () {
+            return "hey, I found a penny!";
+        }
+    }
+
+    class Fighter : Assignment {
+        public int healthPoints;
+        public int strength;
+        public Fighter (string assignmentName = "FighterPolymorphism") : base (assignmentName) { }
+        public Fighter (int hp, int strength) {
+            this.healthPoints = hp;
+            this.strength = strength;
+        }
+        public override void AddLogic () {
+            var paladin = new Paladin (1200, 100, 0.25);
+            var darkKnight = new DarkKnight (1000, 120, 0.25, 0.30);
+
+            int damage2Paladin = 0;
+            int damage2DarkKnight = 0;
+
+            while (paladin.GetHP () > 0 && darkKnight.GetHP () > 0) {
+                damage2DarkKnight = paladin.Attack ();
+                darkKnight.TakeDamage (damage2DarkKnight);
+                damage2Paladin = darkKnight.Attack ();
+                paladin.TakeDamage (damage2DarkKnight);
+            }
+
+            var outcome = "";
+            if (paladin.GetHP () > 0 && darkKnight.GetHP () <= 0)
+                outcome = "A glorious victory for the Paladin!";
+            else if (paladin.GetHP () <= 0 && darkKnight.GetHP () > 0)
+                outcome = "The Dark Knight has risen!";
+            else
+                outcome = "In war there are no winners, only widows.";
+            var x = outcome;
+        }
+        public virtual int GetHP () {
+            return this.healthPoints;
+        }
+
+        public virtual int Attack () {
+            return this.strength;
+        }
+
+        public virtual void TakeDamage (int amount) {
+            this.healthPoints -= amount;
+        }
+
+    }
+
+    class Knight : Fighter {
+        public double blockChance;
+
+        public Knight (int hp, int strength, double blockChance) : base (hp, strength)
+
+        {
+            this.blockChance = blockChance;
+        }
+
+        public override void TakeDamage (int amount) {
+            if (this.Block ())
+                this.healthPoints -= amount / 4;
+            else
+                this.healthPoints -= amount;
+        }
+
+        public bool Block () {
+            Random random = new Random (this.healthPoints);
+            return (this.blockChance >= random.NextDouble ());
+        }
+    }
+
+    class Paladin : Knight {
+        public Paladin (int hp, int strength, double blockChance):
+            base (hp, strength, blockChance) {
+                this.blockChance += 0.1;
+            }
+
+        public override void TakeDamage (int amount) {
+            if (this.Block ()) {
+                this.healthPoints -= amount / 4;
+                if (this.healthPoints >= 0) // Whenever a Paladin blocks, they heal a bit of their healthPoints.
+                    this.healthPoints += this.HealAmount ();
+            } else
+                this.healthPoints -= amount;
+        }
+
+        public int HealAmount () {
+            return strength / 5;
+        }
+    }
+
+    class DarkKnight : Knight {
+        public double critChance;
+
+        public DarkKnight (int hp, int strength, double blockChance, double critChance):
+            base (hp, strength, blockChance) {
+                this.critChance = 0.3;
+            }
+
+        public override int Attack () {
+            if (this.CriticalHit ()) // Dark Knights have a chance to double their damage.
+                return 2 * this.strength;
+            else
+                return this.strength;
+        }
+
+        public bool CriticalHit () {
+            Random random = new Random (this.healthPoints);
+            return (this.critChance >= random.NextDouble ());
+        }
+    }
+
 }
