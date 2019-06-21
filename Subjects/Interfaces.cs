@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Csharp_Polymorphism_Interfaces_Generics.Utils;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
@@ -30,6 +31,19 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
             //BA-7 RELATED
             PlayerInterfaces playerInterfacesInstance = new PlayerInterfaces();
             playerInterfacesInstance.AddLogic();
+
+            //BA-8 RELATED
+            PersonInterfaces2 personInterFaces2Instance = new PersonInterfaces2();
+            personInterFaces2Instance.AddLogic();
+
+            //BA-9 RELATED
+            AccessModifiers accesModifiersInstance = new AccessModifiers();
+            accesModifiersInstance.AddLogic();
+
+            //BA-10 FCKING GOTIT
+            Vector2Interfaces vector2InterfacesInstance = new Vector2Interfaces();
+            vector2InterfacesInstance.AddLogic();
+
 
         }
 
@@ -358,17 +372,19 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
       player.GainExperience(150);
       int current_level =  player.GetLevel() ;
 
-      int current_attack = player.weapon.GetAttackPower();
-      // This weapon is kinda meh. Let's equip something better.
+      int current_attack = player.GetWeapon().GetAttackPower();
+
+
       Weapon wpn = new Weapon("Lightbringer", 255);
       player.SetWeapon(wpn) ;
-      string current_weapon = player.weapon.GetName() ;
-      current_attack = player.weapon.GetAttackPower() ;
-      // That's better!
+      string current_weapon = player.GetWeapon().GetName() ;
+      current_attack = player.GetWeapon().GetAttackPower() ;
+
+
 
       player.GainExperience(300);
       current_level = player. GetLevel() ;
-                  this.ReturnsAnswer (current_attack.ToString ());
+                  this.ReturnsAnswer (current_attack.ToString());
             System.Console.WriteLine (this.ReturnCorrect ());
     }
 
@@ -416,6 +432,230 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
 
     public string GetName() { return this.name ; }
     public int GetAttackPower() { return this.attackpower; }
+  }
+class PersonInterfaces : Assignment
+  {
+    protected string name;
+    private int id;
+    public string gender;
+    public PersonInterfaces(string assignmentName="PersonInterfaces"):base(assignmentName){}
+    public PersonInterfaces(string name, int id, string gender)
+    {
+      this.name = name;
+      this.id = id;
+      this.gender = gender;
+    }
+
+    public override void AddLogic()
+    {
+      StudentInterfaces s = new StudentInterfaces("John Doe", 54321, "male");
+      string name = s. GetName() ;
+      int id = s. GetId() ;
+      string gender = s. gender ;
+      string introduction = s.Introduction();
+                  this.ReturnsAnswer (introduction.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
+    }
+
+    public string GetName() { return this.name; }
+    public int GetId() { return this.id; }
+  }
+
+  class StudentInterfaces : PersonInterfaces
+  {
+    public StudentInterfaces(string name, int id, string gender) :
+      base(name, id, gender) { }
+
+    public string Introduction()
+    {
+      return "I am " + this. name  + ", " + this. gender  +
+        ", and my student ID is " + this.GetId() ;
+    }
+  }
+  class PersonInterfaces2 : Assignment
+  {
+    protected string name;
+    private int id;
+    public string gender;
+    public PersonInterfaces2(string assignmentName="PersonInterFaces2"):base(assignmentName){}
+    public PersonInterfaces2(string name, int id, string gender)
+    {
+      this.name = name;
+      this.id = id;
+      this.gender = gender;
+    }
+
+    public override void AddLogic()
+    {
+      StudentInterfaces2 s = new StudentInterfaces2("John Doe", 54321, "male");
+      string name = s. GetName() ;
+      int id = s. GetId() ;
+      string gender = s. gender ;
+      string introduction = s.Introduction();
+                        this.ReturnsAnswer (introduction.ToString());
+            System.Console.WriteLine (this.ReturnCorrect ());
+    }
+
+    public string GetName() { return this.name; }
+    public int GetId() { return this.id; }
+  }
+
+  class StudentInterfaces2 : PersonInterfaces2
+  {
+    public StudentInterfaces2(string name, int id, string gender) :
+      base(name, id, gender) { }
+
+    public string Introduction()
+    {
+      return "I am " + this. name  + ", " + this. gender  +
+        ", and my student ID is " + this.GetId() ;
+    }
+  }
+  class AccessModifiers : Assignment
+  {
+    public AccessModifiers(string assignmentName ="AccesModifiersInterfaces"):base(assignmentName){}
+    public override void AddLogic()
+    {
+      InheritMystery hmmm = new InheritMystery();
+      var whatIsA = hmmm.a;
+     //var whatIsB = hmmm.a;//-> SHOULD be Error
+       //var whatIsC = hmmm.c;// -> SHOULD be Error
+      hmmm.Test();
+
+      var acessModifierACorrect = TestAccessModifiers("a", "Public");
+      var acessModifierBCorrect = TestAccessModifiers("b", "Private");
+      var acessModifierCCorrect = TestAccessModifiers("c", "Family");
+                        this.ReturnsAnswer (acessModifierCCorrect.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
+    }
+    public static bool TestAccessModifiers(string field, string test)
+    {
+      return typeof(Mystery).GetField(field, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Attributes.ToString() == test;
+    }
+  }
+
+  public class Mystery
+  {
+     public int a = 1;
+     private  int b = 2;
+     protected  int c = 3;
+  }
+
+  public class InheritMystery : Mystery
+  {
+    public void Test()
+    {
+      var whatIsA = a;
+      //var whatIsB = b; -> Error
+      var whatIsC = c;
+    }
+  }
+
+  public  interface Ship  {
+     void Update(double dt = 0.0) ;
+  }
+
+  class SimpleSpaceShip : Ship {
+    public Vector2Interfaces position;
+    public Vector2Interfaces velocity;
+
+    public SimpleSpaceShip(Vector2Interfaces pos, Vector2Interfaces vel){
+      this.position = pos;
+      this.velocity = vel;
+    }
+
+    public void Update(double dt){
+      this.position.Sum(this.velocity.Mul(dt));
+    }
+  }
+
+    class Vector2Interfaces : Assignment {
+    public  double  x;
+    public double  y;
+    public Vector2Interfaces(string assignmentName="Vector2Interfaces"): base(assignmentName){}
+    public Vector2Interfaces( double x,  double  y) {
+       this.x = x ;
+       this.y = y ;
+    }
+
+    public override void AddLogic()
+    {
+      var p1 = new Vector2Interfaces(0.0,0.0);
+      var v1 = new Vector2Interfaces(10.0,10.0);
+      SimpleSpaceShip  s = new SimpleSpaceShip(p1,v1) ;
+      EnterpriseNX01 nx1 =  new EnterpriseNX01(s) ;
+      nx1.GoToWarp(3.0);
+
+      var p2 = new Vector2Interfaces(0.0,100.0);
+      var v2 = new Vector2Interfaces(10.0,10.0);
+       SimpleSpaceShip  tv = new SimpleSpaceShip(p2, v2);
+
+       Ship[]  fleet = new Ship[2]{nx1,tv} ;
+
+      for(int i = 0; i < fleet.Length; i = i + 1 ){
+        fleet[i].Update(0.16);
+     }
+                             this.ReturnsAnswer (fleet.ToString ());
+            System.Console.WriteLine (this.ReturnCorrect ());
+    }
+
+    public Vector2Interfaces  Mul(double  c){
+      Vector2Interfaces res = new Vector2Interfaces((this.x*c),(this.y*c));
+      return res;
+    }
+
+    public void Sum(Vector2Interfaces v1) {
+      this.x = this.x + v1.x;
+      this.y = this.y + v1.y;
+    }
+  }
+
+  class WarpEngine {
+    public double current_warp_factor;
+    public double max_warp;
+
+    public WarpEngine(){
+      this.current_warp_factor =  0.0 ;
+      this.max_warp =  5.0 ;
+    }
+
+    public void SetWarpFactor(double factor){
+      this.current_warp_factor = Math.Min(factor, this.max_warp);
+    }
+
+    public double GetWarpSpeed() {
+      var warp_factor = this.current_warp_factor;
+      var speed_light = 1.0;
+      return speed_light / Math.Pow(warp_factor, 10.0/3.0);
+    }
+  }
+
+  public abstract class ShipDecorator   : Ship {
+    public Ship ship ;
+
+    public ShipDecorator(Ship ship)   {
+       this.ship = ship  ;
+    }
+
+    public  void Update(double dt) {}
+  } 
+
+  class EnterpriseNX01 : ShipDecorator {
+    public WarpEngine warp_engine;
+
+    public EnterpriseNX01(Ship  ship) : base(ship) {
+      this.ship = ship;
+       this.warp_engine = new WarpEngine();
+    }
+
+    public void GoToWarp(double factor) {
+       this .warp_engine.SetWarpFactor(factor);
+    }
+
+    public void Update(double dt) {
+      var multiplier = this.warp_engine.GetWarpSpeed();
+      this.ship.Update(dt * multiplier);
+    }
   }
 
 }
