@@ -1,0 +1,32 @@
+    class Planet : Assignment
+    {
+        public string name;
+        public double distance, gravity;
+
+        public Planet(string name, double distance, double gravity)
+        {
+            this.name = name;
+            this.distance = distance;
+            this.gravity = gravity;
+        }
+        public string Info()
+        {
+            return "Planet " + this.name + ", distance: " + this.distance + "AU, gravity: " + this.gravity;
+        }
+
+    }
+    class Test
+    {
+        public override void AddLogic()
+        {
+            Planet p1 = new Planet("Jupiter", 5.203, 2.5);
+            Planet p2 = new Planet("Earth", 1.0, 1.0);
+            string n1 = p1.name;
+            double d1 = p1.distance;
+            double g1 = p1.gravity;
+            string sp1 = p1.Info();
+            string sp2 = p2.Info();
+            this.ReturnsAnswer(sp1.ToString());
+            System.Console.WriteLine(this.ReturnCorrect());
+        }
+    }

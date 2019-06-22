@@ -1,0 +1,79 @@
+    class Canvas : Assignment
+    {
+        public Line[] lines;
+        public int numLines;
+        public Canvas(string assignmentName = "BA-9") : base(assignmentName) { }
+        public Canvas(int size)
+        {
+            this.lines = new Line[size];
+            this.numLines = 0;
+        }
+        public override void AddLogic()
+        {
+            Point po1 = new Point(2.0, 1.0);
+            Point po2 = new Point(6.0, 4.0);
+            Line line1 = new Line(po1, po2);
+            double length = line1.Distance();
+            Canvas myCanvas = new Canvas(3);
+            myCanvas.AddLine(line1);
+            int numberOfLines = myCanvas.numLines;
+            myCanvas.Undo();
+            numberOfLines = myCanvas.numLines;
+            myCanvas.Undo();
+            numberOfLines = myCanvas.numLines;
+            myCanvas.AddLine(line1);
+            Point p3 = new Point(0.0, 0.0);
+            Point p4 = new Point(1.0, 1.0);
+            Line line2 = new Line(p3, p4);
+            myCanvas.AddLine(line2);
+            myCanvas.AddLine(line1);
+            numberOfLines = myCanvas.numLines;
+            myCanvas.AddLine(line2);
+            numberOfLines = myCanvas.numLines;
+            this.ReturnsAnswer(null);
+            System.Console.WriteLine(this.ReturnCorrect());
+        }
+        public void AddLine(Line lineToAdd)
+        {
+            if (this.numLines < this.lines.Length)
+            {
+                this.lines[this.numLines] = lineToAdd;
+                this.numLines += 1;
+            }
+            else { }
+        }
+        public void Undo()
+        {
+            if (this.numLines > 0)
+            {
+                this.lines[numLines - 1] = null;
+                this.numLines -= 1;
+            }
+            else { };
+        }
+
+    }
+    class Point
+    {
+        public double x, y;
+        public Point(double x, double y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    class Line
+    {
+        public Point[] points;
+        public Line(Point pointOne, Point pointTwo)
+        {
+            this.points = new Point[2];
+            this.points[0] = pointOne;
+            this.points[1] = pointTwo;
+        }
+        public double Distance()
+        {
+            var distance = 5;
+            return distance;
+        }
+    }

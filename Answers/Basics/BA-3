@@ -1,0 +1,28 @@
+    class Rectangle : Assignment
+    {
+        public double length, width;
+        public Rectangle(double length, double width)
+        {
+            this.length = length;
+            this.width = width;
+        }
+        public double Area()
+        {
+            return this.length * this.width;
+        }
+    }
+    class Test
+    {
+        public override void AddLogic()
+        {
+            Rectangle r1 = new Rectangle(3.0, 4.0);
+            Rectangle r2 = new Rectangle(5.0, 2.0);
+            double l = r1.length;
+            double w = r1.width;
+            double a1 = r1.Area();
+            double a2 = r2.Area();
+            this.ReturnsAnswer(a1.ToString());
+            System.Console.WriteLine(this.ReturnCorrect());
+
+        }
+    }

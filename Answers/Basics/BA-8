@@ -1,0 +1,52 @@
+    class Turtle : Assignment
+    {
+        public Position position;
+        public bool penOn;
+        public Turtle(string assignmentName = "BA-8") : base(assignmentName)
+        {
+            this.position = new Position(0, 0);
+            this.penOn = false;
+        }
+        public override void AddLogic()
+        {
+            Turtle leonardo = new Turtle();
+            leonardo.Pen(true);
+            leonardo.Right(10);
+            leonardo.Up(10);
+            leonardo.Left(5);
+            leonardo.Down(4);
+            int xPos = leonardo.position.x;
+            int yPos = leonardo.position.y;
+            this.ReturnsAnswer(xPos.ToString());
+            System.Console.WriteLine(this.ReturnCorrect());
+        }
+        public void Right(int value)
+        {
+            this.position.x += value;
+        }
+        public void Left(int value)
+        {
+            this.position.x -= value;
+        }
+        public void Up(int value)
+        {
+            this.position.y += value;
+        }
+        public void Down(int value)
+        {
+            this.position.y -= value;
+        }
+        public void Pen(bool value)
+        {
+            this.penOn = value;
+        }
+    }
+    class Position
+    {
+        public int x, y;
+        public Position(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }

@@ -1,0 +1,43 @@
+    class Player : Assignment
+    {
+        public string name;
+        public int healthPoints, damage;
+        public Player(string assignmentName = "BA-6") : base(assignmentName) { }
+        public Player(string name, int damage)
+        {
+            this.name = name;
+            this.damage = damage;
+            this.healthPoints = 100;
+        }
+        public override void AddLogic()
+        {
+            Player pl1 = new Player("John Snow", 30);
+            Player pl2 = new Player("Night King", 60);
+            string winner = null;
+            while (winner == null)
+            {
+                pl1.TakeDamage(pl2.damage);
+                pl2.TakeDamage(pl1.damage);
+                if (pl1.healthPoints < 0 && pl2.healthPoints < 0)
+                {
+                    winner = "It is a draw";
+                }
+                else if (pl1.healthPoints < 0)
+                {
+                    winner = pl2.name + " wins";
+                }
+                else if (pl2.healthPoints < 0)
+                {
+                    winner = pl1.name + " wins";
+                }
+            }
+            this.ReturnsAnswer(pl2.ToString());
+            System.Console.WriteLine(this.ReturnCorrect());
+
+        }
+        public void TakeDamage(int amount)
+        {
+            this.healthPoints -= amount;
+        }
+
+    }

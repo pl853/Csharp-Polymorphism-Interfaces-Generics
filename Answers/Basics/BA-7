@@ -1,0 +1,45 @@
+    class Car : Assignment
+    {
+        public string make, model;
+        public int speed;
+        public Car(string assignmentName = "BA-7") : base(assignmentName) { }
+        public Car(string make, string model)
+        {
+            this.make = make;
+            this.model = model;
+            this.speed = 0;
+        }
+        public override void AddLogic()
+        {
+            Car ca1 = new Car("Toyota", "Yaris");
+            Car ca2 = new Car("Ferrari", "458 Italia Coupe");
+            ca1.SpeedUp(60);
+            ca1.SlowDown(5);
+            ca2.SpeedUp(100);
+            ca2.SlowDown(10);
+
+            string sa1 = "The " + ca1.make + " " + ca1.model + " is going " + ca1.speed + "km/hr. It is ";
+            sa1 += ca1.IsSpeeding(80) ? "speeding" : "not speeding";
+
+            string sa2 = "The " + ca2.make + " " + ca2.model + " is going " + ca2.speed + "km/hr. It is ";
+            sa2 += ca2.IsSpeeding(80) ? "speeding" : "not speeding";
+            this.ReturnsAnswer(sa2.ToString());
+            System.Console.WriteLine(this.ReturnCorrect());
+        }
+        public void SpeedUp(int value)
+        {
+            this.speed += value;
+        }
+        public void SlowDown(int value)
+        {
+            this.speed -= value;
+        }
+        public bool IsSpeeding(int speedLimit)
+        {
+            if (this.speed > speedLimit)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
