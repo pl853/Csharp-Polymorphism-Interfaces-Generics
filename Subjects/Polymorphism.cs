@@ -492,7 +492,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects
             Triangle tri = new Triangle(6, 9);
             string tri_dims = tri.GetDims();
             double area = tri.Area();
-            this.ReturnsAnswer(null);
+            this.ReturnsAnswer(area.ToString());
             System.Console.WriteLine(this.ReturnCorrect());
         }
 
