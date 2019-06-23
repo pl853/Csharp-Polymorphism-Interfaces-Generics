@@ -1,0 +1,30 @@
+  class Array< a > {
+    public  a[]  elems;
+
+    public Array(int amount) {
+      this.elems = new a[amount];
+    }
+
+    public  void   CopyByVal( a[]  new_elems) {
+      var elems_dest = new a[new_elems.Length];
+      for(int i = 0; i < new_elems.Length; i = i + 1) {
+         elems_dest[i] = new_elems[i]; 
+      }
+       this.elems = elems_dest; 
+    }
+
+    public void   CopyByRef(a[]  new_elems) {
+       this.elems = new_elems; 
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args) {
+      var elems = new int[]{1, 5, 9, -1, 7};
+      var array1 = new Array<int>(elems.Length);
+      array1. CopyByVal(elems);
+      array1.elems[2] = 99  ;
+      array1.CopyByRef(elems);
+      array1.elems[2] = 99 ;
+    }
+  }

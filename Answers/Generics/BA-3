@@ -1,0 +1,38 @@
+  class Pair<a,b> {
+    public  a fst ;
+    public  b snd ;
+    public Pair(a fst,  b snd) {
+       this.fst = fst; 
+       this.snd = snd; 
+    }
+  }
+
+  class Vector2 : Pair<double,double> {
+    public Vector2( double  x,  double  y) : base( x , y ) { }
+
+    public Vector2 Sum(Vector2 v2) {
+      return  new Vector2(v2.fst + this.fst,v2.snd + this.snd) ;
+    }
+  }
+
+  class Vector2_int : Pair<int,int> {
+    public Vector2_int ( int x, int   y) : base( x, y ) { }
+
+    public Vector2_int   Sum(Vector2_int v2){
+      return  new Vector2_int(v2.fst + this.fst,v2.snd + this.snd)  ;
+    }
+
+    public Vector2 ToDouble(){
+      return new Vector2(this.fst,this.snd)  ;
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args){
+      var v1 = new Vector2(1.0,-2.0)  ;
+      var v2 =  new Vector2_int(10,2);
+      var v3 = v2.ToDouble();
+      var v4 = v1.Sum(v3);
+      var v5 = v2.Sum(new Vector2_int(1, 1));
+    }
+  }

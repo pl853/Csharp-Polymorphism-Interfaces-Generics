@@ -1,0 +1,32 @@
+  class Container<a> {
+    public a current;
+    public bool empty;
+  
+    public Container() { this.empty = true; }
+
+    public void SetValue(a current){
+      this.current = current;
+      this.empty = false;
+    }
+  
+    public bool IsEmpty() {
+      return this.empty;
+    }
+
+    public a GetValue() {
+      return this.current;
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args){
+      var n1 = new Container< int >();
+      var n2 = new Container< string >();
+      var n3 = new Container<bool >();
+      var n4 = new Container<int >();
+      n1.SetValue(1) ;
+      n2.SetValue("2") ;
+      n3.SetValue ( n3 .IsEmpty() || n4.IsEmpty());
+      n4.SetValue(n1. GetValue ());
+    }
+  }

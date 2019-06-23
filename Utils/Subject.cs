@@ -1,4 +1,5 @@
-
+using System;
+using System.IO;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Utils
 {
@@ -25,6 +26,34 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
         public virtual void ToggleState(bool value)
         {
             this.isRunning = value;
+        }
+
+        public void ReturnCode(string fileLocation)
+        {
+            String line;
+            try
+            {
+                StreamReader sr = new StreamReader(fileLocation);
+
+                line = sr.ReadLine();
+
+                while (line != null)
+                {
+                    Console.WriteLine(line);
+                    line = sr.ReadLine();
+                }
+
+
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("END OF INFO\n");
+            }
         }
     }
 }

@@ -1,0 +1,58 @@
+  class Pair< a ,b  > {
+    public a fst;
+    public b snd;
+
+    public Pair( a  fst,  b  snd) {
+      this.fst = fst;
+      this.snd = snd;
+    }
+  }
+
+  class Vector2 : Pair<double,double> {
+    public Vector2(double x, double y) : base(x,y) { }
+
+    public double Max() {
+      if(this. fst  > this. snd ) {
+        return this. fst ;
+      }
+      else {
+        return this. snd ;
+      }
+    }
+  }
+
+  class Vector4 : Triple<Vector2, double, double> {
+    public Vector4(double x, double y, double z, double w) :
+      base(( new Vector2(x,y)), z, w) { }
+
+    public double Max(){
+      double x_y_max  = this.fst.Max ();
+      var v2_zw = new Vector2(this. snd, this.trd);
+      double z_w_max =  v2_zw. Max ();
+      var x_y_z_w_max = new  Vector2(this.snd, this.trd) ;
+      return x_y_z_w_max.Max();
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args){
+      var v1 = new Vector2(1.0, -2.0);
+      var v2 = new Vector2(10.0, 2.0);
+      var m1 = v1.Max();
+      var m2 = v2.Max();
+      var v3 = new Vector2(m1, m2);
+      var v4 = new Vector4( v3 .fst,  v3 .snd, v1  .snd,  v2 .fst);
+      var m3 = v4.Max();
+    }
+  }
+
+class Triple<a,b,c>:Pair<a,b>
+{
+  public c trd;
+  public Triple(a a,b b ,c c) : base(a,b)
+  {
+    this.trd = c;
+  }
+}
+
+

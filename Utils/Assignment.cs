@@ -39,7 +39,6 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
 
                 //close the file
                 sr.Close();
-                Console.ReadLine();
             }
             catch (Exception e)
             {
@@ -47,7 +46,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
             }
             finally
             {
-                Console.WriteLine("Executing finally block.");
+                Console.WriteLine("END OF INFO \n");
             }
         }
 
@@ -57,12 +56,12 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
             if (this.isCorrect)
             {
                 System.Console.ForegroundColor = System.ConsoleColor.Green;
-                return "The Code of " + this.assignmentName + " is correct\n";
+                return "The Code of " + this.assignmentName + " is correct";
             }
             else
             {
                 System.Console.ForegroundColor = System.ConsoleColor.Red;
-                return "The Code of " + this.assignmentName + " is Incorrect\n";
+                return "The Code of " + this.assignmentName + " is Incorrect";
             }
 
         }
@@ -72,6 +71,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
             if (answer != null)
             {
                 this.isCorrect = true;
+                // System.Console.WriteLine(answer + "\n");
             }
             else this.isCorrect = false;
         }

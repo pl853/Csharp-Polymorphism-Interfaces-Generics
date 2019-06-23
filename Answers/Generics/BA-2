@@ -1,0 +1,50 @@
+  class Pair<a,b  >
+  {
+    public a fst  ;
+    public  b snd ;
+
+    public Pair(a fst, b snd)
+    {
+      this. fst  = fst;
+      this. snd  = snd;
+    }
+  }
+
+  class Button {
+    public bool isPressed = false;
+
+    public void OnPress() {
+      this.isPressed = (!this.isPressed);
+    }
+  }
+
+  class Slider {
+    public int value = 25;
+    public int min_value = 0;
+    public int max_value = 100;
+
+    public void OnSlide(int value) {
+      this.value = value;
+    }
+  }
+
+  class Test {
+    public static void Main(string[] args) {
+       Pair <Button,Slider>  user_interface =
+        new  Pair<Button,Slider> (new  Button (), new  Slider ());
+      user_interface. fst .OnPress();
+      user_interface.snd .OnSlide(35);
+
+      string situation = "";
+      if (!user_interface. fst .isPressed)
+        situation = "This machine is off.";
+      else if (user_interface. fst .isPressed
+        && user_interface.snd  .value < 75)
+        situation = "This machine is on and is working at "
+          + user_interface.  snd.value + "% capacity.";
+      else
+        situation = "This machine is on and is working at "
+          + user_interface.snd.value + "% capacity."
+          + "\nWARNING! DANGER OF OVERHEATING!";
+    }
+  }

@@ -1,0 +1,42 @@
+Consider a very simple container of two values. There are many reasons to want to pair two things together: name and surname, x and y, hour and minute, etc
+In the case of the pair x and y, which are both int's, the code will look like this:
+
+class IntIntPair {
+    public int x;
+    public int y;
+}
+
+This code is correct. But what if we also want a pair of x and y where x is a int and y is a double?
+In the case the codee will look like this:
+class IntDoublePair{
+    public int x;
+    public double y;
+}
+
+Both classes are correct and will work. The only problem is that we have the same code with a little change.
+When programming the more code you have the higher the chance bugs will exists in you code. 
+So how can we do the same but with less code. 
+
+Thats when we use something called PARAMETIC POLYMORPHISM
+A short explanation for this is: It doesnt matter what type of values u insert (int,string,float,double), it will always work.
+The code looks like this.
+
+class TypePair<a,b>
+{
+    public a firstType;
+    public b secondType;
+    public TypePair(a firstType, b secondType)
+    {
+        this.firstType = firstType;
+        this.secondType = secondType;
+    }
+}
+
+
+To create an instance of the class defined above this following should be done
+
+If we want an instance where both x and y are of type int :
+var intIntPair = new TypePair<int,int>(10,10);
+
+If we want an instance where x is an int and y is a double :
+var intDoublePair = new TypePair<int,double>(10,10.0);
