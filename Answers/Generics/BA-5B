@@ -1,0 +1,50 @@
+using System;
+
+namespace Tests
+{
+  interface Option<a>
+  {
+    c Visit<c>(Func< a,c > on_some, Func< c > on_none);
+  }
+
+  class None<a> : Option<a>
+  {
+    public None() { }
+
+    public c Visit<c>(Func< a,c > on_some, Func< c > on_none)
+    {
+      return on_none();
+    }
+  }
+
+  class Some<a> : Option<a>
+  {
+      a v;
+    public Some( a v ) { this.v = v; }
+
+    public c Visit<c>(Func< a,c > on_some, Func< c > on_none)
+    {
+      return on_some(this.v);
+    }
+  }
+
+  class Test {
+    public static void Main(string[] args) {
+      Option<int>[] digits = new Option<int>[] {
+        new None<int>(),
+        new Some<int>(9),
+        new Some<int>(2),
+        new Some<int>(0) };
+
+      Func<int, string> onSome = v =>  "" + v ;
+      Func<string> onNone = () =>  " " ;
+
+      string time_display = "";
+      time_display += digits[0].Visit<string>(onSome, onNone);
+      time_display += digits[1].Visit<string>(onSome, onNone);
+      time_display += ":";
+      time_display += digits[2].Visit<string>(onSome, onNone);
+      time_display += digits[3].Visit<string>(onSome, onNone);
+    }
+  }
+}

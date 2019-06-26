@@ -1,0 +1,53 @@
+using System.Collections.Generic;
+
+namespace Tests
+{
+  class CustomerService
+  {
+    public bool isOpen;
+    public string customer;
+
+    public CustomerService()
+    {
+      this.isOpen = false;
+      this.customer = "No customer";
+    }
+
+    public void HelpCustomer(string customer)
+    {
+      this.customer = customer;
+    }
+
+    public void Open()
+    {
+      this.isOpen = true;
+    }
+
+    public void Close()
+    {
+      this.isOpen = false;
+      this.customer = "No customer";
+    }
+  }
+
+  class Test {
+    public static void Main(string[] args)
+    {
+      CustomerService cs = new CustomerService();
+      cs.Open();
+
+      var queue = new Queue<string>();
+       queue.Enqueue("Happy customer") ;
+       queue.Enqueue("Bored customer") ;
+      queue.Enqueue("Grumpy customer");
+
+      // Let's start helping customers.
+      cs.HelpCustomer( queue.Dequeue() );
+      cs.HelpCustomer(  queue.Dequeue());
+
+      string next_customer =  "Grumpy customer" ;
+      // He looks angry. Let's close now, lol.
+      cs.Close();
+    }
+  }
+}

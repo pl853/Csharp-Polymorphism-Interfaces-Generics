@@ -1,0 +1,49 @@
+using System.Collections.Generic;
+
+namespace Tests
+{
+  class Test {
+    public static void Main(string[] args)
+    {
+      /*
+      In this simplified version of Patience your goal is to
+      complete the foundation pile. This pile is complete when
+      it has, from top to bottom, the 4 of Spades, 3 of Spades,
+      2 of Spades, 1 of Spades and the Ace of Spades.
+      
+      Keep in mind these rules:
+      - you may not place cards on top of the deck;
+      - on ordinary piles (pile1 and pile2), you may only place
+        red cards (Hearts and Diamonds) on top of black cards
+        (Spades and Clubs) and vice versa.
+      */
+
+      // Game setup
+      var deck = new Stack< string>();
+      deck.Push("Jack of Clubs");
+      deck.Push("3 of Spades");
+
+      var pile1 = new Stack< string>();
+      pile1.Push("5 of Hearts");
+      pile1.Push("4 of Spades");
+      pile1.Push("3 of Diamonds");
+
+      var pile2 = new Stack< string >();
+      pile2.Push("4 of Clubs");
+
+      var foundation_pile = new Stack<string  >();
+      foundation_pile.Push("Ace of Spades");
+      foundation_pile.Push("1 of Spades");
+      foundation_pile.Push("2 of Spades");
+
+      // There are three moves left to win the game. The first one
+      // is for free. You have to do the last two moves yourself!
+      foundation_pile.Push(deck.Pop());
+      pile2.Push(pile1.Pop());
+      foundation_pile.Push(pile1.Pop()) ;
+
+      // NOTE: in the exam, questions won't be
+      // made more complicated with game rules.
+    }
+  }
+}
