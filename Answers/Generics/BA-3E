@@ -1,0 +1,61 @@
+using System.Collections.Generic;
+
+namespace Tests
+{
+  class Test {
+    /*
+    You need to write an overloaded method:
+    - One that converts a Stack to a Queue;
+    - One that converts a Queue to a Stack (so vice versa).
+    For instructions on how to convert, see the reader
+    'Generics and containers, and standard collections'.
+    You can also find a hint in this exercise itself.
+    */
+
+
+    static Queue<string> OtherSide (Stack<string> stackToConvert)
+    {
+      var q = new Queue<string>(stackToConvert);
+      return q; 
+    }
+    
+    static Stack<string> OtherSide (Queue<string> queueToConvert)
+    {
+      var m = new Stack<string>(queueToConvert);
+      return m ; 
+    }
+
+
+
+
+
+
+
+    public static void Main(string[] args) {
+      // Ground floor
+      // On this floor people enter the empty elevator.
+      var people_waiting = new List<string> { "Person 1", "Person 2" };
+      var people_row = new Stack<string>(people_waiting);
+
+      // First floor
+      // On this floor the people get out of the
+      // elevator on the same side they entered.
+      people_row.Pop();
+      people_row.Push("Person 3");
+      people_row.Push("Person 4");
+
+      // Second floor
+      // On this particular floor the door opens on the other side.
+      var people_queue = OtherSide(people_row);
+      people_queue.Dequeue();
+      people_queue.Dequeue();
+      people_queue.Enqueue("Person 5");
+
+      // Third floor
+      // On this floor the door opens on the original side again.
+      people_row = OtherSide(people_queue);
+      people_row.Pop();
+      people_row.Pop();
+    }
+  }
+}

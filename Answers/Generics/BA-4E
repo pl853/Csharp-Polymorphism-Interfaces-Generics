@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+
+namespace Games
+{
+  class Player {
+    public List<Building> buildings;
+    public List<Tank> tanks;
+    public Player() {
+      // Players start off with a construction yard
+      // and a certain number of tanks.
+      this.buildings = new List<Building>();
+      this.buildings.Add(new ConstructionYard());
+      this.tanks = new List<Tank>();
+      for (int i = 0; i <  2 ; i++)
+        this.tanks.Add(new  Tank() );
+    }
+
+    public void BuildBuilding(string building_to_build) {
+      ConstructionYard cy = (ConstructionYard)this.buildings[0];
+      this.buildings.Add(cy.ConstructBuilding(building_to_build));
+    }
+
+    public void BuildTank() {
+      for (int i = 0; i < this.buildings.Count; i++)
+        // If the player has a Factory, use it to build a Tank.
+        // Read the if-statement as: "if this building is of type Factory"
+        if (this.buildings[i].GetType() == typeof(Factory)) {
+          Factory factory = (Factory)this.buildings[i];
+          this.tanks.Add(factory. ProduceTank ());
+          break;
+        }
+    }
+  }
+
+  class Tank { }
+
+  abstract class Building {
+    public string name;
+    protected string description;
+    
+    public Building() {
+      this.name = "Unspecified building";
+      this.description = "Building"; }
+
+    public string GetDescription() { return this.description; }
+  }
+
+  class ConstructionYard : Building {
+    public ConstructionYard() {
+      this.name = "Construction Yard";
+      this.description = "The construction yard builds other buildings.";
+    }
+
+    public Building ConstructBuilding(string building_to_build) {
+      if (building_to_build == "Refinery")
+        return new Refinery();
+      else // name == "Factory"
+        return new Factory();
+    }
+  }
+
+  class Refinery : Building {
+    public Refinery() {
+      this.name = "Refinery";
+      this.description = "The Refinery allows you to make gold."; }
+  }
+
+  class Factory : Building {
+    public Factory() {
+      this.name = "Factory";
+      this.description = "The Factory produces tanks.";
+    }
+    public Tank ProduceTank() {
+      return new  Tank ();
+    }
+  }
+
+  class Strategy {
+    static void Main(string[] args) {
+      Player player = new Player();
+      player.BuildBuilding("Refinery");
+      player.BuildBuilding("Factory");
+
+      for (int i = 0; i < player.buildings.Count; i++)
+         player .BuildTank ();
+
+      // Let's see what buildings and how many tanks the player has.
+      string base_report = "";
+      for (int i = 0; i < player.buildings.Count; i++) {
+        base_report = player.buildings[i].name;
+        base_report += " (" + player.buildings[i].GetDescription() + ")";
+      }
+      string tank_report = "The player has this many tanks: "
+        + player.tanks.Count;
+    }
+  }
+}
