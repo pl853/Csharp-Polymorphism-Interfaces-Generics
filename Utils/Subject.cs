@@ -33,7 +33,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
             String line;
             try
             {
-                StreamReader sr = new StreamReader(fileLocation);
+                StreamReader sr = new StreamReader(fileLocation + this.subjectName);
 
                 line = sr.ReadLine();
 
@@ -42,7 +42,6 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Utils
                     Console.WriteLine(line);
                     line = sr.ReadLine();
                 }
-
 
                 sr.Close();
             }

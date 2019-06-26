@@ -1,0 +1,57 @@
+namespace Tests
+{
+  interface Visitor<a,b> {
+    b OnSome(a _a);
+    b OnNone();
+  }
+
+  class IntVisitorToString : Visitor<int,string> {
+    public string OnNone() { 
+      return  "---"  ;
+    }
+    public string OnSome(int v) { 
+      return  "|"+ v+"|" ;
+    }
+  }
+
+  interface OptionIntString {
+    string Visit(IntVisitorToString v);
+  }
+
+  class None : OptionIntString
+  {
+    public None() { }
+
+    public string Visit(IntVisitorToString vis) {
+      return vis.OnNone();
+    }
+  }
+
+  class Some : OptionIntString
+  {
+    public int v;
+    public Some(int v) { this.v = v; }
+
+    public string Visit( IntVisitorToString  vis) {
+      return "" + vis.OnSome(this.v) ;
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args){
+      var values_or_not = new OptionIntString[] {
+        new Some(7),
+        new None(),
+        new Some(5),
+        new None() };
+      var s = "";
+      var v = new IntVisitorToString();
+      for(int i = 0; i < values_or_not.Length; i = i + 1)
+      {
+        var x = values_or_not[i];
+        s = s + x.Visit(v)  + "; ";
+      }
+    }
+  }
+}
+

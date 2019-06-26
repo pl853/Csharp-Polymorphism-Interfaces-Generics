@@ -4,10 +4,10 @@ using Csharp_Polymorphism_Interfaces_Generics.Utils;
 
 namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
     class Interfaces : Subject {
-        public Interfaces (string subjectName = "Interfaces") : base (subjectName) {
-            System.Console.WriteLine (ReturnInfo ());
-        }
+        public Interfaces (string subjectName = "Interfaces") : base (subjectName) { }
         public override void AddMainLogic () {
+            System.Console.WriteLine (ReturnInfo ());
+            ReturnCode ("./TheoreticalInfo/");
             //BA-1 RELATED
             Timer timerInstance = new Timer ();
             timerInstance.AddLogic ();
@@ -221,7 +221,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
         }
 
         public bool IsPressed () {
-            return true;
+            return this.isPressed;
         }
     }
 
@@ -522,7 +522,7 @@ namespace Csharp_Polymorphism_Interfaces_Generics.Subjects {
     }
 
     public interface Ship {
-        void Update (double dt = 0.0);
+        void Update (double dt);
     }
 
     class SimpleSpaceShip : Ship {

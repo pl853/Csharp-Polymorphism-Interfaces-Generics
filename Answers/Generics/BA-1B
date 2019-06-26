@@ -1,0 +1,46 @@
+using System;
+using System.Diagnostics;
+using System.Threading;
+
+namespace Tests
+{
+  interface Option<a> {
+    b Visit<b>(Func< a ,   b> on_some, Func<b  > on_none);
+  }
+
+  class None<a> : Option<a> {
+    public None() { }
+
+    public b Visit<b>(Func<a, b> on_some, Func<b> on_none) {
+      return  on_none() ;
+    }
+  }
+
+  class Some<a> : Option<a> {
+    public  a  v;
+    public Some(a v) { this.v = v; }
+
+    public b Visit<b>(Func<a, b> on_some, Func<b> on_none)
+    {
+      return  on_some(this.v) ;
+    }
+  }
+
+  class Simple {
+    public static void Main(string[] args){
+      var values_or_not = new  Option<int>[] {
+        new  None <int>(),
+        new  Some <int>(10),
+        new  Some <int>(2),
+        new  None <int>() };
+      var s = "";
+      for(int i = 0; i < values_or_not.Length; i = i + 1)
+      {
+        var x = values_or_not[i];
+        Func<int,string> onSome = v =>  "Value: "+ v ;
+        Func<string> onNone = () => "No value"  ;
+        s = s + x  .Visit <string>(onSome  , onNone  ) + "; ";
+      }
+    }
+  }
+}

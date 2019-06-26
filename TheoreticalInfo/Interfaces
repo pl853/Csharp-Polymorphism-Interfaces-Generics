@@ -1,0 +1,3 @@
+When public you can you it everywhere
+when protected you can only use it in the class itself and the classes that inherit the class
+when private you cant use it anywhere only when your create Get...() function which returns the private value. 
